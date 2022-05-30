@@ -1,0 +1,27 @@
+body{
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+}
+
+form{
+	background-color: #80c141;
+	width: auto;
+	padding: 1px;
+	border-radius: 10px;
+	display: inline-block;
+    margin-top: 15%;
+}
+form ul{
+	padding: 0px;
+	margin: 4px;
+}
+form ul li{
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+}
+input,{
+	border-radius: 6px;
+	padding: 2px;
+}
