@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // relacion one to many
+    public function images()
+    {
+        return $this->hasMany('App\Image');
+    }
 }
