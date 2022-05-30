@@ -13,18 +13,19 @@ class Image extends Model
     // relacion one to many
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     // relacion one to many
     public function like()
     {
-        return $this->hasMany('App\Like');
+        return $this->hasMany(Like::class);
     }
 
     // relacion many to one
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
+    
 }
