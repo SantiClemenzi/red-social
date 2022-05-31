@@ -39,3 +39,5 @@ use App\Models\Image;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/config', [App\Http\Controllers\userController::class, 'config']);
+
