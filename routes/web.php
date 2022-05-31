@@ -39,5 +39,6 @@ use App\Models\Image;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/config', [App\Http\Controllers\userController::class, 'config']);
+Route::get('/config', [App\Http\Controllers\userController::class, 'config'])->name('config');
+Route::post('/user/update', [App\Http\Controllers\userController::class, 'update'])->name('update');
 
