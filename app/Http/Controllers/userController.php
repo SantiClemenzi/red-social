@@ -15,8 +15,11 @@ class userController extends Controller
     // metodo update
     public function update(Request $request)
     {
-        $id = Auth::user()->id;
+        // seteamos el usuario
+        $user = Auth::user();
+        $id = $user->id;
 
+        // validamos los datos ingresados
         $validate = $this->validate($request,[
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
@@ -24,15 +27,23 @@ class userController extends Controller
             'email' => ['required', 'string', 'max:255', Rule::unique('users','email')->ignore($id, 'id')],
         ]);
 
+        // obtenemos los datos del form
         $name = $request->input('name');
         $surname = $request->input('surname');
         $username = $request->input('username');
         $email = $request->input('email');
-        var_dump($id);
-        var_dump($name);
-        var_dump($surname);
-        var_dump($username);
-        var_dump($email);
-        die();
+
+        // asignamos los nuevos valores
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->username = $username;
+        $user->email = $email;
+
+        // ejecutamos la consulta
+        $user->update();
+
+        return redirect()->route('config')
+                         ->with(['message'=>'Usuario actualizado correctamente']);
+
     }
 }
