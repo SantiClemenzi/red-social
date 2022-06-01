@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
+Use Illuminate\Support\Facades\File;
+Use Illuminate\Support\Facades\Response;
 
 class userController extends Controller
 {
@@ -20,11 +23,11 @@ class userController extends Controller
         $id = $user->id;
 
         // validamos los datos ingresados
-        $validate = $this->validate($request,[
+        $validate = $this->validate($request, [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'username' => ['required', 'string', 'max:255', Rule::unique('users','username')->ignore($id, 'id')],
-            'email' => ['required', 'string', 'max:255', Rule::unique('users','email')->ignore($id, 'id')],
+            'username' => ['required', 'string', 'max:255', Rule::unique('users', 'username')->ignore($id, 'id')],
+            'email' => ['required', 'string', 'max:255', Rule::unique('users', 'email')->ignore($id, 'id')],
         ]);
 
         // obtenemos los datos del form
@@ -39,11 +42,30 @@ class userController extends Controller
         $user->username = $username;
         $user->email = $email;
 
+        // subir imagen
+        $image_path = $request->file('image_path');
+
+        if($image_path){
+            // establecemos la ruta
+            $image_path_name = time().$image_path->getClientOriginalName();
+
+            // guardamos en la carpeta del storage 
+            Storage::disk('users')->put($image_path_name, File::get($image_path));
+            // guardamos en la db
+            $user->image = $image_path_name;
+        }
+
         // ejecutamos la consulta
         $user->update();
 
         return redirect()->route('config')
-                         ->with(['message'=>'Usuario actualizado correctamente']);
+            ->with(['message' => 'Usuario actualizado correctamente']);
+    }
 
+    public function getImage($filename)
+    {
+        $file = Storage::disk('users')->get($filename);
+
+        return  Response($file, 200);
     }
 }
