@@ -11,6 +11,11 @@ Use Illuminate\Support\Facades\Response;
 
 class userController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function config()
     {
         return view('user.config');
