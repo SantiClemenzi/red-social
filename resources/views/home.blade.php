@@ -13,12 +13,21 @@
             <div class="card">
                 <div class="card-header">
                     @if($image->user->image)
-                        <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" />
+                    <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" />
                     @endif
                     {{$image->user->username}}
                 </div>
-                <div class="card-body">
-                    <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="">
+                <div class="card-body" style="padding: 0px; border: 0px;">
+                    <div class="card" style="width: 100%;">
+                        <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="" class="card-img-top">
+                    </div>
+                    <div class="description" style="padding: 1%;">
+                        <strong>{{'@'.$image->user->username}}</strong>
+                        <p>
+                            {{$image->description}}
+                        </p>
+                    </div>
+                    <div class="likes"></div>
                 </div>
             </div>
             @endforeach
