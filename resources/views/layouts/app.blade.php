@@ -63,7 +63,7 @@
                         @else
 
                         <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Inicio</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="#">Subir </a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{url('/image/upload')}}">Subir </a></li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

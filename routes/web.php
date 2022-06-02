@@ -41,5 +41,6 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/config', [App\Http\Controllers\userController::class, 'config'])->name('config');
 Route::get('/user/avatar/{filename}', [App\Http\Controllers\userController::class, 'getImage'])->name('getImage');
+Route::get('/image/upload', [App\Http\Controllers\ImageController::class, 'create'])->name('upload');
 Route::post('/user/update', [App\Http\Controllers\userController::class, 'update'])->name('update');
 

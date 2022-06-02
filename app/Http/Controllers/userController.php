@@ -11,6 +11,7 @@ Use Illuminate\Support\Facades\Response;
 
 class userController extends Controller
 {
+    // añadimos las restricciones
     public function __construct()
     {
         $this->middleware('auth');
