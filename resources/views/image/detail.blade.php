@@ -3,13 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             @if(session('message'))
             <div class="alert alert-success">
                 {{session('message')}}
             </div>
             @endif
-            @foreach($images as $image)
             <div class="card">
                 <div class="card-header">
                     @if($image->user->image)
@@ -20,9 +19,7 @@
                 </div>
                 <div class="card-body" style="padding: 0px; border: 0px;">
                     <div class="card" style="width: 100%;">
-                        <a href="{{url('image/detail')}}/{{$image->id}}">
-                            <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="" class="card-img-top">
-                        </a>
+                        <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="" class="card-img-top">
                     </div>
 
                     <div class="likes" style="margin: 2%;">
@@ -40,13 +37,6 @@
                     <div style="margin: 1%;">
                         <a href="#" class="btn btn-warning">Comentarios {{count($image->comments)}}</a>
                     </div>
-                </div>
-            </div>
-            @endforeach
-
-            <div class="card text-center">
-                <div class="text-center">
-                    <div class="card-body"> {{$images->render()}}</div>
                 </div>
             </div>
         </div>

@@ -56,15 +56,20 @@ class ImageController extends Controller
             'message' => 'La foto se ha sido subida correctamente',
         ]);
     }
-    // public function getImage($filename)
-    // {
-    //     $file = Storage::disk('image')->get($filename);
-    //     return new  Response($file, 200);
-    // }
+
     public function getImage($filename)
     {
         $file = Storage::disk('images')->get($filename);
 
         return  Response($file, 200);
+    }
+
+    public function detail($id)
+    {
+        $image = Image::find($id);
+
+        return view('image.detail', [
+            'image' => $image,
+        ]);
     }
 }
