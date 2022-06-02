@@ -31,6 +31,12 @@
                 </div>
             </div>
             @endforeach
+
+            <div class="card text-center">
+                <div class="text-center">
+                    <div class="card-body"> {{$images->render()}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
