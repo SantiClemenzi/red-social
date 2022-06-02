@@ -7,6 +7,7 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 
 class ImageController extends Controller
 {
@@ -40,9 +41,9 @@ class ImageController extends Controller
         $image->description = $description;
 
         // subimos imagen
-        if($image_path){
+        if ($image_path) {
             // establecemos la ruta
-            $image_path_name = time().$image_path->getClientOriginalName();
+            $image_path_name = time() . $image_path->getClientOriginalName();
 
             // guardamos en la carpeta del storage 
             Storage::disk('images')->put($image_path_name, File::get($image_path));
@@ -54,5 +55,16 @@ class ImageController extends Controller
         return redirect()->route('home')->with([
             'message' => 'La foto se ha sido subida correctamente',
         ]);
+    }
+    // public function getImage($filename)
+    // {
+    //     $file = Storage::disk('image')->get($filename);
+    //     return new  Response($file, 200);
+    // }
+    public function getImage($filename)
+    {
+        $file = Storage::disk('images')->get($filename);
+
+        return  Response($file, 200);
     }
 }

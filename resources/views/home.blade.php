@@ -18,6 +18,7 @@
                     {{$image->user->username}}
                 </div>
                 <div class="card-body">
+                    <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="">
                 </div>
             </div>
             @endforeach
