@@ -9,19 +9,18 @@
                 {{session('message')}}
             </div>
             @endif
+            @foreach($images as $image)
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="card-header">
+                    @if($image->user->image)
+                        <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" />
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    {{$image->user->username}}
+                </div>
+                <div class="card-body">
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>
