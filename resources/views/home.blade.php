@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="description" style="padding: 1%;">
-                        <strong>{{'@'.$image->user->username}}</strong>
+                        <strong>{{'@'.$image->user->username}} || {{\FormatTime::LongTimeFilter($image->created_at)}}</strong>
                         <p>
                             {{$image->description}}
                         </p>

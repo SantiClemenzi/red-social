@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">
                     @if($image->user->image)
-                        @include('includes.avatar')
+                    @include('includes.avatar')
                     <!-- <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" /> -->
                     @endif
                     {{$image->user->username}}
@@ -24,12 +24,12 @@
 
                     <div class="likes" style="margin: 2%;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                         </svg>
                     </div>
 
                     <div class="description" style="padding: 1%;">
-                        <strong>{{'@'.$image->user->username}}</strong>
+                        <strong>{{'@'.$image->user->username}} || {{\FormatTime::LongTimeFilter($image->created_at)}}</strong>
                         <p>
                             {{$image->description}}
                         </p>
