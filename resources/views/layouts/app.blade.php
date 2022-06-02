@@ -62,7 +62,7 @@
                         @endif
                         @else
 
-                        <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Inicio</a></li>
                         <li class="nav-item"> <a class="nav-link" href="#">Subir </a></li>
 
                         <li class="nav-item dropdown">
