@@ -46,6 +46,16 @@
 
                             <input type="submit" value="Enviar" class="btn btn-success">
                         </form>
+                        <div class="description" style="padding: 1%; margin-top: 2%;">
+                            @foreach($image->comments as $comment)
+                                <div style="background-color: #cccccc; margin: 1%; padding: 1px; border-radius: 8px;">
+                                    <strong>{{'@'.$comment->user->username}} {{\FormatTime::LongTimeFilter($comment->created_at)}}</strong>
+                                    <p>
+                                        {{$comment->content}}
+                                    </p>
+                                </div>
+                            @endforeach
+                    </div>
                     </div>
                 </div>
             </div>
