@@ -46,4 +46,5 @@ Route::get('/image/upload', [App\Http\Controllers\ImageController::class, 'creat
 Route::post('/image/save', [App\Http\Controllers\ImageController::class, 'save'])->name('save');
 Route::get('/image/file/{filename}', [App\Http\Controllers\ImageController::class, 'getImage'])->name('image.file');
 Route::get('/image/detail/{id}', [App\Http\Controllers\ImageController::class, 'detail'])->name('image.detail');
+Route::post('/comment', [App\Http\Controllers\commentController::class, 'store'])->name('store');
 

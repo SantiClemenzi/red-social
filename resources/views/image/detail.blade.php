@@ -37,11 +37,11 @@
                     <div class="clearfix"></div>
                     <div style="margin: 1%;">
                         <h2 class="">Comentarios {{count($image->comments)}}</h2>
-                        <form action="" method="POST">
+                        <form action="{{url('/comment')}}" method="POST">
                             @csrf
                             <input type="hidden" name="image_id" value="{{$image->id}}">
                             <p>
-                                <textarea name="content"  rows="2.5" class="form-control" require></textarea>
+                                <textarea name="comment"  rows="2.5" class="form-control" require></textarea>
                             </p>
 
                             <input type="submit" value="Enviar" class="btn btn-success">
