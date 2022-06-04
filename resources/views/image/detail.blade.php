@@ -37,7 +37,7 @@
                     <div class="clearfix"></div>
                     <div style="margin: 1%;">
                         <h2 class="">Comentarios {{count($image->comments)}}</h2>
-                        <form action="{{url('/comment')}}" method="POST">
+                        <form action="{{url('/comment/')}}" method="POST">
                             @csrf
                             <input type="hidden" name="image_id" value="{{$image->id}}">
                             <p>
