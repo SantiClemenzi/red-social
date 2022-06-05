@@ -41,21 +41,24 @@
                             @csrf
                             <input type="hidden" name="image_id" value="{{$image->id}}">
                             <p>
-                                <textarea name="comment"  rows="2.5" class="form-control" require></textarea>
+                                <textarea name="comment" rows="2.5" class="form-control" require></textarea>
                             </p>
 
                             <input type="submit" value="Enviar" class="btn btn-success">
                         </form>
                         <div class="description" style="padding: 1%; margin-top: 2%;">
                             @foreach($image->comments as $comment)
-                                <div style="background-color: #cccccc; margin: 1%; padding: 1px; border-radius: 8px;">
-                                    <strong>{{'@'.$comment->user->username}} {{\FormatTime::LongTimeFilter($comment->created_at)}}</strong>
-                                    <p>
-                                        {{$comment->content}}
-                                    </p>
-                                </div>
+                            <div style="background-color: #cccccc; margin: 1%; padding: 1px; border-radius: 8px;">
+                                <strong>{{'@'.$comment->user->username}} {{\FormatTime::LongTimeFilter($comment->created_at)}}</strong>
+                                <p>
+                                    {{$comment->content}}
+                                    @if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                        <a href="{{url('/comment/delete')}}/{{$comment->id}}" class="btn btn-sm btn-danger" style="float: right; margin-right: 2%;">Eliminar</a>
+                                    @endif
+                                </p>
+                            </div>
                             @endforeach
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
