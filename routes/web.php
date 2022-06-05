@@ -48,4 +48,6 @@ Route::get('/image/file/{filename}', [App\Http\Controllers\ImageController::clas
 Route::get('/image/detail/{id}', [App\Http\Controllers\ImageController::class, 'detail'])->name('image.detail');
 Route::post('/comment', [App\Http\Controllers\commentController::class, 'store'])->name('comment');
 Route::get('/comment/delete/{id}', [App\Http\Controllers\commentController::class, 'delete'])->name('comment.delete');
+Route::get('/like/{image_id}', [App\Http\Controllers\likeController::class, 'like'])->name('like');
+Route::get('/dislike/{image_id}', [App\Http\Controllers\likeController::class, 'dislike'])->name('dislike');
 
