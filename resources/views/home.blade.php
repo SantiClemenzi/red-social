@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-header">
                     @if($image->user->image)
-                        @include('includes.avatar')
+                    @include('includes.avatar')
                     <!-- <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" /> -->
                     @endif
                     {{$image->user->username}}
@@ -24,11 +24,23 @@
                             <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="" class="card-img-top">
                         </a>
                     </div>
-
-                    <div class="likes" style="margin: 2%;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    <?php $user_like = false; ?>
+                    <div class="like" style="margin: 2%; display: inline-block; text-align: justify;">
+                        @foreach($image->like as $like)
+                        @if($like->user->id == Auth::user()->id)
+                        <?php $user_like = true; ?>
+                        @endif
+                        @endforeach
+                        @if($user_like)
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                         </svg>
+                        @else
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg>
+                        @endif
+                        <p style="color: gray; float: rigth;"> {{count($image->like)}} </p>
                     </div>
 
                     <div class="description" style="padding: 1%;">
