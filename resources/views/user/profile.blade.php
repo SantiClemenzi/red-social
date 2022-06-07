@@ -9,9 +9,21 @@
                 {{session('message')}}
             </div>
             @endif
-            
+            <div >
+                <div class="col-md-4" style="" >
+                    @if($user->image)
+                    @include('includes.avatar')
+                    @endif
+                </div>
+                <div class="col-md-8">
+                    <h1 style="font-size: 100%; ">{{'@'.$user->username}}</h1>
+                    <h2 style="font-size: 100%; ">{{$user->name}} {{$user->surname}}</h2>
+                    <p  style="font-size: 90%; ">Se unio hace {{\FormatTime::LongTimeFilter($user->created_at)}}</p>
+                </div>
+            </div>
+            <hr>
             @foreach($user->images as $image)
-                @include('includes.image', ['image'=>$image])
+            @include('includes.image', ['image'=>$image])
             @endforeach
 
             <div class="card text-center">
