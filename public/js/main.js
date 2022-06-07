@@ -39,4 +39,12 @@ window.addEventListener("load", function () {
             },
         });
     });
+
+    // buscador
+    $("#buscador").submit(function (e) {
+        $(this).attr(
+            "action",
+            url + "user/all/" + $("#buscador #search").val()
+        );
+    });
 });
