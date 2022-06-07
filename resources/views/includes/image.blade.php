@@ -1,4 +1,4 @@
-<div class="card">
+            <div class="card">
                 <div class="card-header">
                     @if($image->user->image)
                     @include('includes.avatar')
@@ -38,7 +38,7 @@
                         </p>
                     </div>
                     <div style="margin: 1%;">
-                        <a href="#" class="btn btn-warning">Comentarios {{count($image->comments)}}</a>
+                        <a href="{{url('image/detail')}}/{{$image->id}}" class="btn btn-warning">Comentarios {{count($image->comments)}}</a>
                     </div>
                 </div>
             </div>

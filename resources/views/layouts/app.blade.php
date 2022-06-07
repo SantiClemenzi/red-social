@@ -77,6 +77,9 @@
                                                         document.getElementById('logout-form').submit();">
                                     mi perfil
                                 </a>
+                                <a class="dropdown-item" href="{{ url('/likes')}}">
+                                    tus likes
+                                </a>
                                 <a class="dropdown-item" href="{{ url('/config')}}">
                                     configuracion
                                 </a>
