@@ -67,4 +67,13 @@ class LikeController extends Controller
             ]);
         }
     }
+
+    public function likes()
+    {
+        $likes = Like::orderBy('image_id', 'desc')->paginate(5);
+
+        return view('like.likes', [
+            'likes' => $likes,
+        ]);
+    }
 }

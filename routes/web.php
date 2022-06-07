@@ -50,4 +50,5 @@ Route::post('/comment', [App\Http\Controllers\commentController::class, 'store']
 Route::get('/comment/delete/{id}', [App\Http\Controllers\commentController::class, 'delete'])->name('comment.delete');
 Route::get('/like/{image_id}', [App\Http\Controllers\likeController::class, 'like'])->name('like');
 Route::get('/dislike/{image_id}', [App\Http\Controllers\likeController::class, 'dislike'])->name('dislike');
-
+Route::get('/dislike/{image_id}', [App\Http\Controllers\likeController::class, 'dislike'])->name('dislike');
+Route::get('/likes', [App\Http\Controllers\likeController::class, 'likes'])->name('likes');
