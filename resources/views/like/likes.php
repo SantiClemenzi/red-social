@@ -1,1 +1,0 @@
-<h1>Listado de likes</h1>
