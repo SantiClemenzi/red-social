@@ -2,9 +2,10 @@
                 <div class="card-header">
                     @if($image->user->image)
                     @include('includes.avatar')
-                    <!-- <img src="{{ route('getImage', ['filename'=>$image->user->image]) }}" class="rounded-10" style="width: 35px;" alt="Avatar" /> -->
                     @endif
-                    {{$image->user->username}}
+                    <a href="{{ url('/user/profile') }}/{{Auth::user()->id}}" style="text-decoration: none;">
+                        {{$image->user->username}}
+                    </a>
                 </div>
                 <div class="card-body" style="padding: 0px; border: 0px;">
                     <div class="card" style="width: 100%;">

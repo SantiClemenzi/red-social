@@ -80,7 +80,7 @@ class userController extends Controller
         $user = Auth::user();
 
         return view('user.profile',[
-            'user'=>$user,
+            'user' => $user,
         ]);
     }
 }
