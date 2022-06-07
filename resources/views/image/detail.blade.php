@@ -46,6 +46,12 @@
                             {{$image->description}}
                         </p>
                     </div>
+                    @if(Auth::user()->id == $image->user->id)
+                    <div class="actions" style="margin-left: 2%;">
+                        <a href="#" class="btn btn-warning">Actualizar</a>
+                        <a href="{{route('image.delete', ['id'=>$image->id])}}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                    @endif
                     <div class="clearfix"></div>
                     <div style="margin: 1%;">
                         <h2 class="">Comentarios {{count($image->comments)}}</h2>

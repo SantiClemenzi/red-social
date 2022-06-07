@@ -45,6 +45,7 @@ Route::get('/user/profile/{id}', [App\Http\Controllers\userController::class, 'p
 Route::post('/user/update', [App\Http\Controllers\userController::class, 'upDate'])->name('update');
 Route::get('/image/upload', [App\Http\Controllers\ImageController::class, 'create'])->name('upload');
 Route::post('/image/save', [App\Http\Controllers\ImageController::class, 'save'])->name('save');
+Route::get('/image/delete/{id}', [App\Http\Controllers\ImageController::class, 'delete'])->name('image.delete');
 Route::get('/image/file/{filename}', [App\Http\Controllers\ImageController::class, 'getImage'])->name('image.file');
 Route::get('/image/detail/{id}', [App\Http\Controllers\ImageController::class, 'detail'])->name('image.detail');
 Route::post('/comment', [App\Http\Controllers\commentController::class, 'store'])->name('comment');

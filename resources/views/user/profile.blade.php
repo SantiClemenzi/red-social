@@ -10,7 +10,7 @@
             </div>
             @endif
             <div >
-                <div class="col-md-4" style="" >
+                <div class="col-md-4">
                     @if($user->image)
                     @include('includes.avatar')
                     @endif
