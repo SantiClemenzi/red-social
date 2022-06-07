@@ -10,6 +10,16 @@
             </div>
             @endif
             <h1>Todos los usuarios</h1>
+            <form action="{{route('user.all')}}" method="GET">
+                <div class="row">
+                    <div class="form-group col">
+                        <input type="text" id="search" name="search" class="form-control">
+                    </div>
+                    <div class="form-group col">
+                        <input type="submit" value="Buscar" class="btn btn-success">
+                    </div>
+                </div>
+            </form>
             <hr>
             @foreach($users as $user)
             <div>
