@@ -14,6 +14,9 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
                             <div class="col-md-7">
+                                <div class="avatar" style="width: 50%; margin-bottom: 2%;">
+                                    <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}" alt="" class="avatar">
+                                </div>
                                 <input type="file" class="form-control" id="image_path" name="image_path">
                                 @if($errors->has('image_path'))
                                 <span class="invalid-feedback" role="alert">
