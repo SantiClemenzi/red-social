@@ -8,8 +8,9 @@
 
                 <div class="card-body">
 
-                    <form action="{{url('/image/save')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{url('/image/update')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="image_id" value="{{$image->id}}">
                         <div class="form-group row">
                             <label for="image_path" class="col-md-3 col-form-label text-md-right">Imagen</label>
                             <div class="col-md-7">

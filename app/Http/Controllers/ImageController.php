@@ -124,4 +124,38 @@ class ImageController extends Controller
             return redirect()->route('home');
         }
     }
+
+    public function update(Request $request)
+    {
+        // validacion
+        $validate = $this->validate($request, [
+            'description' => 'required',
+            'image_path' => 'image',
+        ]);
+
+        $image_id = $request->input('image_id');
+        $image_path = $request->file('image_path');
+        $description = $request->input('description');
+
+        // conseguimos objeto
+        $image = Image::find($image_id);
+        $image->description = $description;
+
+        // subimos imagen
+        if ($image_path) {
+            // establecemos la ruta
+            $image_path_name = time() . $image_path->getClientOriginalName();
+
+            // guardamos en la carpeta del storage 
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            // guardamos en la db
+            $image->image_path = $image_path_name;
+        }
+
+        // Actualizamos
+        $image->update();
+
+        return redirect()->route('image.edit', ['id' => $image_id])
+                         ->with(['message' => 'Imagenactualizada con exito']);
+    }
 }
