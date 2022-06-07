@@ -9,6 +9,8 @@
                 {{session('message')}}
             </div>
             @endif
+            <h1>Todos los usuarios</h1>
+            <hr>
             @foreach($users as $user)
             <div>
                 <div class="col-md-4">
