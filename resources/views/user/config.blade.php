@@ -80,7 +80,7 @@
                                 <!-- @if(Auth::user())
                                 <img src="{{ route('getImage', ['filename'=>Auth::user()->image]) }}" class="avatar"/>
                                 @endif -->
-                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path">
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path"autocomplete="image_path">
 
                                 @error('image_path')
                                 <span class="invalid-feedback" role="alert">
