@@ -22,7 +22,7 @@ class userController extends Controller
         return view('user.config');
     }
     // metodo update
-    public function update(Request $request)
+    public function upDate(Request $request)
     {
         // seteamos el usuario
         $user = Auth::user();
@@ -73,5 +73,14 @@ class userController extends Controller
         $file = Storage::disk('users')->get($filename);
 
         return  Response($file, 200);
+    }
+
+    public function profile($id)
+    {
+        $user = Auth::user();
+
+        return view('user.profile',[
+            'user'=>$user,
+        ]);
     }
 }
