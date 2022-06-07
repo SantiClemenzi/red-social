@@ -42,6 +42,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/config', [App\Http\Controllers\userController::class, 'config'])->name('config');
 Route::get('/user/avatar/{filename}', [App\Http\Controllers\userController::class, 'getImage'])->name('getImage');
 Route::get('/user/profile/{id}', [App\Http\Controllers\userController::class, 'profile'])->name('profile');
+Route::get('/user/all', [App\Http\Controllers\userController::class, 'index'])->name('user.all');
 Route::post('/user/update', [App\Http\Controllers\userController::class, 'upDate'])->name('update');
 Route::get('/image/upload', [App\Http\Controllers\ImageController::class, 'create'])->name('upload');
 Route::post('/image/save', [App\Http\Controllers\ImageController::class, 'save'])->name('save');

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
-Use Illuminate\Support\Facades\File;
-Use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 
 class userController extends Controller
 {
@@ -15,6 +16,14 @@ class userController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $user = User::orderBy('id', 'desc')->paginate(5);
+        return view('user.index', [
+            'users' => $user,
+        ]);
     }
 
     public function config()
@@ -51,9 +60,9 @@ class userController extends Controller
         // subir imagen
         $image_path = $request->file('image_path');
 
-        if($image_path){
+        if ($image_path) {
             // establecemos la ruta
-            $image_path_name = time().$image_path->getClientOriginalName();
+            $image_path_name = time() . $image_path->getClientOriginalName();
 
             // guardamos en la carpeta del storage 
             Storage::disk('users')->put($image_path_name, File::get($image_path));
@@ -79,7 +88,7 @@ class userController extends Controller
     {
         $user = Auth::user();
 
-        return view('user.profile',[
+        return view('user.profile', [
             'user' => $user,
         ]);
     }
